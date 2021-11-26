@@ -18,7 +18,7 @@ SDL_Texture *loadImage(const char path[], SDL_Renderer *renderer) {
     return texture;
 }
 
-void writtingText(SDL_Renderer *renderer){
+void writtingText(SDL_Renderer *renderer) {
     TTF_Font *font = TTF_OpenFont("arial.ttf", 25);
     SDL_Color color = {255, 255, 255};
     //TITLE
@@ -52,6 +52,13 @@ void writtingText(SDL_Renderer *renderer){
     SDL_RenderPresent(renderer);
 }
 
-void mouseStartMenu(){
-
+void mouseStartMenu(SDL_Event e) {
+    if (e.button.button == SDL_BUTTON_LEFT && e.button.x >= 50 && e.button.x <= 350 && e.button.y >= 220 &&
+        e.button.y <= 290) {
+        printf("CHARGE");
+    }
+    if (e.button.button == SDL_BUTTON_LEFT && e.button.x >= 50 && e.button.x <= 400 && e.button.y >= 380 &&
+        e.button.y <= 450) {
+        printf("Nouvelle partie");
+    }
 }
