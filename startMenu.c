@@ -17,8 +17,7 @@ SDL_Texture *loadImage(const char path[], SDL_Renderer *renderer) {
     }
     return texture;
 }
-
-void writtingText(SDL_Renderer *renderer) {
+SDL_Texture * writeTitle(SDL_Renderer *renderer) {
     TTF_Font *font = TTF_OpenFont("arial.ttf", 25);
     SDL_Color color = {255, 255, 255};
     //TITLE
@@ -27,35 +26,41 @@ void writtingText(SDL_Renderer *renderer) {
     int texW = 0;
     int texH = 0;
     SDL_QueryTexture(textureFont, NULL, NULL, &texW, &texH);
-    SDL_Rect dstrect = {110, 20, 500, 150};
-    SDL_RenderCopy(renderer, textureFont, NULL, &dstrect);
-    SDL_RenderPresent(renderer);
+    
+    return textureFont;
+}
+SDL_Texture * writeNewGame(SDL_Renderer *renderer) {
+    TTF_Font *font = TTF_OpenFont("arial.ttf", 25);
+    SDL_Color color = {255, 255, 255};
 
     //Button
-    tile = TTF_RenderText_Solid(font, "Charge !", color);
-    textureFont = SDL_CreateTextureFromSurface(renderer, tile);
-    texW = 0;
-    texH = 0;
+    SDL_Surface *tile = TTF_RenderText_Solid(font, "Nouvelle partie !", color);
+    SDL_Texture* textureFont = SDL_CreateTextureFromSurface(renderer, tile);
+    int texW = 0;
+    int texH = 0;
     SDL_QueryTexture(textureFont, NULL, NULL, &texW, &texH);
-    SDL_Rect dstrectNewGame = {50, 220, 300, 70};
-    SDL_RenderCopy(renderer, textureFont, NULL, &dstrectNewGame);
-    SDL_RenderPresent(renderer);
+
+    return textureFont;
+}
+SDL_Texture * writeCharge(SDL_Renderer *renderer) {
+    TTF_Font *font = TTF_OpenFont("arial.ttf", 25);
+    SDL_Color color = {255, 255, 255};
 
     //Button
-    tile = TTF_RenderText_Solid(font, "Nouvelle partie !", color);
-    textureFont = SDL_CreateTextureFromSurface(renderer, tile);
-    texW = 0;
-    texH = 0;
+    SDL_Surface *tile = TTF_RenderText_Solid(font, "Charge !", color);
+    SDL_Texture* textureFont = SDL_CreateTextureFromSurface(renderer, tile);
+    int texW = 0;
+    int texH = 0;
     SDL_QueryTexture(textureFont, NULL, NULL, &texW, &texH);
-    SDL_Rect dstrectCharge = {50, 370, 350, 70};
-    SDL_RenderCopy(renderer, textureFont, NULL, &dstrectCharge);
-    SDL_RenderPresent(renderer);
+
+    return textureFont;
 }
 
-void mouseStartMenu(SDL_Event e) {
+int mouseStartMenu(SDL_Event e) {
     if (e.button.button == SDL_BUTTON_LEFT && e.button.x >= 50 && e.button.x <= 350 && e.button.y >= 220 &&
         e.button.y <= 290) {
         printf("CHARGE");
+        return 1;
     }
     if (e.button.button == SDL_BUTTON_LEFT && e.button.x >= 50 && e.button.x <= 400 && e.button.y >= 380 &&
         e.button.y <= 450) {

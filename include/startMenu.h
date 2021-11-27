@@ -5,7 +5,12 @@
 #ifndef MALLOCWORDSDL2_STARTMENU_H
 #define MALLOCWORDSDL2_STARTMENU_H
 
-void writtingText(SDL_Renderer *renderer);
-void mouseStartMenu(SDL_Event);
+SDL_Texture *writeTitle(SDL_Renderer *renderer);
+
+SDL_Texture *writeNewGame(SDL_Renderer *renderer);
+
+SDL_Texture *writeCharge(SDL_Renderer *renderer);
+
+int mouseStartMenu(SDL_Event);
 
 #endif //MALLOCWORDSDL2_STARTMENU_H
